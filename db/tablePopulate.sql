@@ -1,6 +1,7 @@
 DROP TABLE IF EXISTS Outils_tmp;
 DROP TABLE IF EXISTS TachesAccomplis_tmp;
 DROP TABLE IF EXISTS DescriptionSAE_tmp;
+DROP TABLE IF EXISTS Images_tmp;
 
 CREATE TABLE DescriptionSAE_tmp (
     description_id SERIAL PRIMARY KEY,
@@ -24,11 +25,20 @@ CREATE TABLE Outils_tmp (
     outil VARCHAR
 );
 
+CREATE TABLE Images_tmp (
+    image_id SERIAL PRIMARY KEY,
+    codeSAE VARCHAR,
+    lien_image VARCHAR,
+    position INTEGER
+);
+
 \copy DescriptionSAE_tmp(codeSAE, intitule, objectif, nb_pers, duree, annee) FROM 'data/descriptionSAE.csv' WITH (format csv, header, quote '"')
 
 \copy TachesAccomplis_tmp(codeSAE, tache) FROM 'data/tachesAccomplis.csv' WITH (format csv, header, quote '"')
 
 \copy Outils_tmp(codeSAE, outil) FROM 'data/outils.csv' WITH (format csv, header, quote '"')
+
+\copy Images_tmp(codeSAE, lien_image, position) FROM 'data/images.csv' WITH (format csv, header, quote '"')
 
 INSERT INTO Projet(intitule, objectif, nb_pers, duree, annee) 
 SELECT desc_tmp.intitule, desc_tmp.objectif, desc_tmp.nb_pers, desc_tmp.duree, desc_tmp.annee
@@ -50,6 +60,12 @@ SELECT DISTINCT T_tmp.tache, P.id_projet
     FROM TachesAccomplis_tmp AS T_tmp
     JOIN DescriptionSAE_tmp D_tmp USING(codeSAE)
     JOIN Projet AS P USING(intitule);
+
+INSERT INTO Image(lien_image, position, id_projet)
+SELECT lien_image, position, id_projet
+    FROM Images_tmp AS I_tmp
+    INNER JOIN DescriptionSAE_tmp AS D_tmp USING(codeSAE)
+    INNER JOIN Projet AS P USING(intitule); 
 
 DROP TABLE IF EXISTS Outils_tmp;
 DROP TABLE IF EXISTS TachesAccomplis_tmp;
