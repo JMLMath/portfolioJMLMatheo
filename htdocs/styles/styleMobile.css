@@ -1,0 +1,35 @@
+@media (max-width: 1000px)
+{
+    body
+    {
+        font-size: 1.5em;
+    }
+
+    h1
+    {
+        font-size: 2em;
+    }
+
+    h2
+    {
+        font-size: 1.5em;
+    }
+
+    
+    .projets
+    {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+    }
+    .projets section
+    {
+        width: 90%;
+        padding: 2%;
+    }
+
+    .elements_projet
+    {
+        display: block; /* veut pas que ce soit flex */
+    }
+}

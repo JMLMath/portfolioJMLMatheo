@@ -1,0 +1,4 @@
+## all data files used to populate database
+*.csv
+
+.DS_Store

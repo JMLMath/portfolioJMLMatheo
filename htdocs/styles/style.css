@@ -1,0 +1,56 @@
+h1, h2
+{
+    color: #009480;
+    text-align: center;
+}
+
+p
+{
+    text-align: justify;
+}
+
+body
+{
+    margin : auto 2% auto 2%;
+}
+
+a
+{
+    color: #009480;
+}
+
+.elements_projet
+{
+    display : flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.elements_projet section
+{
+    width: 90%;
+    padding: 2%;
+}
+
+.projets
+{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+/* chacun des projets affichés dans le conteneur */
+.projets section
+{
+    width: 40%;
+    padding: 2%;
+    margin: 2%;
+    border-radius: 8%;
+    background-color: #e4f5f3;
+}
+
+.projets section:hover
+{
+    background-color: #b6f2eb;
+}
