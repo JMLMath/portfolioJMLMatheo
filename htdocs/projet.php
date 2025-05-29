@@ -43,6 +43,17 @@ $requete_outil->bindParam('id_projet', $_GET['id']);
 $requete_outil->execute();
 $outil = $requete_outil->fetchAll();
 
+//recuperation des images du projet
+$requete_images_str = 
+'SELECT I.position, I.lien_image
+FROM Image AS I
+WHERE id_projet = :id_projet
+ORDER BY I.position ASC;';
+$requete_images = $psqlclient->prepare($requete_images_str);
+$requete_images->bindParam('id_projet', $_GET['id']);
+$requete_images->execute();
+$images = $requete_images->fetchAll();
+
 ?>
 
 <html>
@@ -53,8 +64,24 @@ $outil = $requete_outil->fetchAll();
 
     <body>
         <h1> Presentation du projet </h1>
+        
         <article>
             <h2> <?php echo $projet[0]['intitule']; ?> </h2>
+
+            <div class="images_projet">
+                <?php
+                    if(count($images) != 0)
+                    {
+                        foreach($images as $i)  //printing images
+                        {
+                            ?>
+                            <img src="<?php echo $i['lien_image'];?>">
+                            <?php
+                        }
+                    }
+                ?>
+            </div>
+
             <div class="elements_projet">
                 <section>
                     <p> Objectif du projet : <?php echo $projet[0]['objectif']; ?> </p>
@@ -91,6 +118,8 @@ $outil = $requete_outil->fetchAll();
                     </p>
                 </section>
             </div>
+
         </article>
+
     </body>
 </html>

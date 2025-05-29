@@ -1,4 +1,7 @@
 ## all data files used to populate database
 *.csv
 
+## all image content (not icons)
+*/images/
+
 .DS_Store
