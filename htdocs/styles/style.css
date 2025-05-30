@@ -54,3 +54,13 @@ a
 {
     background-color: #b6f2eb;
 }
+
+.images_projet img
+{
+    width: auto;
+    height: 40vh;
+    min-height: 7em;    /* si jamais le viewport est trop petit, on s'assure d'une taille minimale */
+    border-radius: 3%;
+    display: block;
+    margin: auto;
+}

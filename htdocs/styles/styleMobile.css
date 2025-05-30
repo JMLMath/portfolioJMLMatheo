@@ -32,4 +32,10 @@
     {
         display: block; /* veut pas que ce soit flex */
     }
+
+    .images_projet img
+    {
+        width: auto;
+        height: 25vh;
+    }
 }

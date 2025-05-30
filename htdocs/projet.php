@@ -121,5 +121,14 @@ $images = $requete_images->fetchAll();
 
         </article>
 
+        <?php
+        // if images are displayed, so execute the script
+        if(count($images) != 0)
+        {
+            ?>
+            <script src="/scripts/imageSlider.js"></script>
+            <?php
+        }
+        ?>
     </body>
 </html>
