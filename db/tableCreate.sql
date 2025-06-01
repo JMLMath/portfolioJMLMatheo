@@ -30,7 +30,9 @@ CREATE TABLE Developper_competence (
 
 CREATE TABLE Outil (
     id_outil SERIAL PRIMARY KEY,
-    nom_outil VARCHAR
+    nom_outil VARCHAR,
+    lien_icone VARCHAR,
+    lien_banniere VARCHAR
 );
 
 CREATE TABLE Utilise_outil (
