@@ -104,13 +104,21 @@ $images = $requete_images->fetchAll();
                     </p>
                     <h4> Outils utilisés </h4>
                     <p>
-                        <ul>
+                        <ul class="outils">
                             <?php
                                 foreach($outil as $o)
                                 {
                                     $outil_page_link = '/outil.php?id=' . $o['id_outil'];
                                     ?>
-                                    <li> <a href="<?php echo $outil_page_link;?>"> <?php echo $o['nom_outil'];?> </a></li>
+                                    <li>
+                                        <?php
+                                            if($o['lien_icone'] !== NULL)
+                                            {
+                                                ?> <img class="icone" src="<?php echo $o['lien_icone'];?>"/> <?php
+                                            }
+                                        ?>
+                                        <a href="<?php echo $outil_page_link;?>"> <?php echo $o['nom_outil'];?> </a>
+                                    </li>
                                     <?php
                                 }
                             ?>
@@ -130,5 +138,6 @@ $images = $requete_images->fetchAll();
             <?php
         }
         ?>
+        <script src="/scripts/outilsIconesManager.js"></script>
     </body>
 </html>

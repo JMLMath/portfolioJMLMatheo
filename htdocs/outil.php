@@ -21,7 +21,7 @@ if (!isset($_GET['id'])) // verification qu'il y a bien un id de projet en argum
 }
 
 //recuperation de l'outil
-$requete_outil_str = 'SELECT nom_outil FROM outil WHERE id_outil = :id_outil;';
+$requete_outil_str = 'SELECT * FROM outil WHERE id_outil = :id_outil;';
 $requete_outil = $psqlclient->prepare($requete_outil_str);
 $requete_outil->bindParam('id_outil', $_GET['id']);
 $requete_outil->execute();
@@ -46,10 +46,16 @@ $projets = $requete_projets->fetchAll();
     </head>
 
     <body>
-        <h1> Projets utilisant l'outil </h1>
+
+        <?php
+        if($outil[0]['lien_banniere'] !== NULL) // si une image existe dans la base de donnees
+        {
+            ?> <img src="<?php echo $outil[0]['lien_banniere'];?>"/> <?php
+        }
+        ?>
 
         <article>
-            <h2> Outil <?php echo $outil[0]['nom_outil'];?> </h2>
+            <h1> Projets utilisant <?php echo $outil[0]['nom_outil'];?> </h1>
             <p> Voici les projets que j'ai réalisé à l'aide de <?php echo $outil[0]['nom_outil'];?> </p>
             <div class="projets">
                 <?php
