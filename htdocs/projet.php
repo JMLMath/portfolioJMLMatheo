@@ -63,6 +63,8 @@ $images = $requete_images->fetchAll();
     </head>
 
     <body>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
+
         <h1> Presentation du projet </h1>
         
         <article>
@@ -139,5 +141,7 @@ $images = $requete_images->fetchAll();
         }
         ?>
         <script src="/scripts/outilsIconesManager.js"></script>
+
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
     </body>
 </html>

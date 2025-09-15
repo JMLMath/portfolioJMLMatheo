@@ -16,7 +16,7 @@ catch (Exception $e)
         <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"; ?>
     </head>
     <body>
-        <h1> Portfolio de JML Mathéo </h1>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
 
         <article>
             <h2>Mes projets</h2>
@@ -44,5 +44,7 @@ catch (Exception $e)
 
 
             </article>
+
+            <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
     </body>
 </html>

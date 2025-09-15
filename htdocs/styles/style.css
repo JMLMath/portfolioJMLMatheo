@@ -51,6 +51,21 @@ a
     color: #009480;
 }
 
+footer
+{
+    display: flex;
+    justify-content: center;
+    background-color: #e4f5f3;
+    padding: 1%;
+}
+
+footer p
+{
+    text-align: center;
+    font-size: 0.9em;
+    margin: 1% 2% 1% 2%;
+}
+
 .elements_projet
 {
     display : flex;

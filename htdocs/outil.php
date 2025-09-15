@@ -46,6 +46,7 @@ $projets = $requete_projets->fetchAll();
     </head>
 
     <body>
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
 
         <?php
         if($outil[0]['lien_banniere'] !== NULL) // si une image existe dans la base de donnees
@@ -73,6 +74,7 @@ $projets = $requete_projets->fetchAll();
                 ?>
             </div>
         </article>
-               
+        
+        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>           
     </body>
 </html>
