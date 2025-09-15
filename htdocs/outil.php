@@ -50,7 +50,7 @@ $projets = $requete_projets->fetchAll();
         <?php
         if($outil[0]['lien_banniere'] !== NULL) // si une image existe dans la base de donnees
         {
-            ?> <img src="<?php echo $outil[0]['lien_banniere'];?>"/> <?php
+            ?> <img class="banniere" src="<?php echo $outil[0]['lien_banniere'];?>"/> <?php
         }
         ?>
 
