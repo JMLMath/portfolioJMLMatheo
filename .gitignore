@@ -4,4 +4,7 @@
 ## all image content (not icons)
 */images/
 
+## folder containing static html pages
+static_docs
+
 .DS_Store

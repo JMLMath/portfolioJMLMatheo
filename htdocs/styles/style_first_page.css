@@ -1,0 +1,43 @@
+header
+{
+    position: fixed;
+    top : 0vh;
+    width: 100vw;
+    height: 15vh;
+    backdrop-filter: blur(20px);
+}
+
+header h1
+{
+    text-align: center;
+}
+
+.title_box
+{
+    height: 25vh;
+    width: 100vw;
+    padding-top: 75vh;
+    font-size: 200%;
+    text-align: center;
+    vertical-align: center;
+}
+
+#personal_presentation
+{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+#personal_presentation p
+{
+    width: 40vw;
+    text-align: justify;
+}
+
+#photoProfil
+{
+    height: 25vh;
+    border-radius: 50%;
+    margin: 0% 50% 0% 50%;
+}
