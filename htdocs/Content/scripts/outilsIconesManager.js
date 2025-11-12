@@ -11,6 +11,6 @@ elements_projets_li.forEach((elem)=>{
     let outil_link = elem.querySelector("a");
 
     new_img.classList.add('icone');
-    new_img.src = "/images/defaultOutil_icone.png"; // chemin de l'icone d'outil par defaut
+    new_img.src = "/Content/images/defaultOutil_icone.png"; // chemin de l'icone d'outil par defaut
     elem.insertBefore(new_img, outil_link);
 });

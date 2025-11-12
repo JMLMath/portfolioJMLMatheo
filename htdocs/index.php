@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-
 <?php
-try
-{
-    $psqlclient = new PDO('pgsql:host=localhost;dbname=portfolio', 'phpserv', 'phpserv'); 
-}
-catch (Exception $e)
-{
-    die('ERREUR : ' . $e->getMessage()); // arrete execution du programme
-}
 
-$requeteStr = 'SELECT * FROM projet;';
-$requete = $psqlclient->prepare($requeteStr);
-$requete->execute();
-$projets = $requete->fetchAll();
+ini_set('display_errors', 'On');
+error_reporting(E_ALL);
 
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Models/ProjetDAO.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Models/OutilDAO.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . "/Controllers/Controller.php";
+
+$controllers = ["index", "projet", "outil"]; //Liste des contrôleurs
+$controller_default = "index"; //Nom du contrôleur par défaut
+
+//On teste si le paramètre controller existe et correspond à un contrôleur
+//de la liste $controllers
+if(isset($_GET['controller']) and in_array($_GET['controller'], $controllers))
+{
+    $nom_controller = $_GET['controller'];
+}
+else
+{
+    $nom_controller = $controller_default;
+}
+//On détermine le nom de la classe du contrôleur
+$nom_classe = 'Controller_' . $nom_controller;
+
+//On détermine le nom du fichier contenant la définition du contrôleur
+$nom_fichier = 'Controllers/' . $nom_classe . '.php';
+
+//Si le fichier existe et est accessible en lecture
+if (is_readable($nom_fichier))
+{
+//On l'inclut et on instancie un objet de cette classe
+require_once $nom_fichier;
+new $nom_classe();
+}
+else
+{
+    die("Error 404: not found!");
+}
 ?>
-<html>
-    <head>
-        <title> Portfolio JML Mathéo </title>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/head.php"; ?>
-        <link rel="stylesheet" href="/styles/style_first_page.css"/>
-    </head>
-    <body>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/header.php"; ?>
-
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/static_docs/title_page.html"; ?>
-        <h1>Qui suis-je ?</h1>
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/static_docs/personal_presentation.html"; ?>
-
-        <?php include $_SERVER['DOCUMENT_ROOT'] . "/includes/footer.php"; ?>
-    </body>
-</html>

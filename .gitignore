@@ -2,7 +2,7 @@
 *.csv
 
 ## all image content (not icons)
-*/images/
+images/
 
 ## folder containing static html pages
 static_docs
